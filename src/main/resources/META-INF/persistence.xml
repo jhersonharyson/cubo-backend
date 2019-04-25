@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://java.sun.com/xml/ns/persistence"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+
+    <persistence-unit name="default" transaction-type="JTA">
+
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <jta-data-source>java:jboss/datasources/zeusDS</jta-data-source>
+		
+		<!-- class>br.com.totvs.zeus.api.model.Usuario</class -->
+		
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+
+        <properties>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="false"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			
+			<!-- property name="javax.persistence.schema-generation.database.action" value="update"/ -->
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="base1" transaction-type="JTA">
+    </persistence-unit>
+
+    <persistence-unit name="base2" transaction-type="JTA">
+    </persistence-unit>
+
+    <persistence-unit name="base3" transaction-type="JTA">
+    </persistence-unit>
+
+
+
+</persistence>
