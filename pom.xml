@@ -3,8 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>br.com.totvs.zeus</groupId>
-    <artifactId>zeus-api</artifactId>
+    <groupId>br.com.totvs.cubo</groupId>
+    <artifactId>cubo-api</artifactId>
     <version>1.0.0</version>
     <packaging>war</packaging>
 
@@ -22,7 +22,7 @@
 			<dependency>
                 <groupId>br.com.totvs</groupId>
                 <artifactId>summer-bom</artifactId>
-                <version>2.0.0.2018072509</version>
+                <version>2.0.14.2019031810</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -54,6 +54,8 @@
                 <artifactId>junit</artifactId>
                 <version>RELEASE</version>
             </dependency>
+
+
 
 		</dependencies>
     </dependencyManagement>
@@ -101,10 +103,21 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.7.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>br.com.totvs</groupId>
+            <artifactId>summer-security</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
-        <finalName>zeus-api</finalName>
+        <finalName>api</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

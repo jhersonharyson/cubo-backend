@@ -10,7 +10,7 @@
 
         <jta-data-source>java:jboss/datasources/zeusDS</jta-data-source>
 		
-		<!-- class>br.com.totvs.zeus.api.model.Usuario</class -->
+		<!-- class>Usuario</class -->
 		
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
 
