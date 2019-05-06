@@ -1,13 +1,12 @@
 package br.com.totvs.cubo.api;
 
-import br.com.totvs.cubo.api.model.request.CuboWSRequest;
 import br.com.totvs.cubo.api.database.Connect;
 import br.com.totvs.cubo.api.model.Cubo;
+import br.com.totvs.cubo.api.model.request.CuboWSRequest;
 import br.com.totvs.cubo.api.model.response.ConfirmacaoWSResponse;
 import br.com.totvs.cubo.api.service.CuboService;
 import br.com.totvs.cubo.api.service.UsuarioService;
 import br.com.totvs.cubo.api.util.ReadData;
-import br.com.totvs.summer.security.sso.TokenBuilder;
 import io.swagger.annotations.*;
 import org.apache.log4j.Logger;
 
@@ -17,10 +16,12 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Date;
 
+//implements ILoginService
+
 
 @Api(value = "API Cubo")
 @Path("")
-public class CuboWS {
+public class CuboWS  {
 
 	public static final String MESSAGE = "Message";
 	private Logger logger = Logger.getLogger(CuboWS.class);
@@ -144,5 +145,75 @@ public class CuboWS {
 			return Response.ok(e.getMessage()).status(403).header(MESSAGE, e.getMessage()).build();
 		}
 	}
+//
+//	@Override
+//	public Subject login(String login, String senha, String modulo) throws LoginException {
+//		try {
+//
+//			Subject subject = new Subject();
+//			subject.setLogin(login);
+//			subject.setModulo(modulo);
+//			subject.setSenha(senha);
+//
+//			Map<String, Object> mapa = new HashMap<>();
+//			subject.setCustomValues(mapa);
+//
+//			String token = TokenBuilder.build(new Gson().toJson(subject));
+//
+//			return this.postServicoSGA(null, token);
+//		} catch (Exception e) {
+//			throw new LoginException(e);
+//		}
+//
+//	}
+//
+//	@Override
+//	public Subject loginBySSOMethod(String tokenSSO, String modulo) throws LoginException {
+//
+//		try {
+//
+//			Map<String, Object> mapa = new HashMap<>();
+//			mapa.put("token", tokenSSO);
+//			Subject subject = new Subject();
+//			subject.setCustomValues(mapa);
+//
+//			String token = TokenBuilder.build(new Gson().toJson(subject));
+//
+//			return this.postServicoSGA(null, token);
+//		} catch (Exception e) {
+//			throw new LoginException(e);
+//		}
+//
+//	}
+//    private Subject postServicoSGA(URI uriServico, String token) throws LoginException {
+//        HttpClient httpClient = HttpClientBuilder.create().build();
+//        try {
+//            HttpPost postRequest = new HttpPost(uriServico);
+//
+//            postRequest.setHeader(HttpHeaders.AUTHORIZATION, token);
+//
+//
+//            HttpResponse response = httpClient.execute(postRequest);
+//
+//            if(response.getStatusLine().getStatusCode() != 200) {
+//                StringBuilder message = new StringBuilder();
+//                Arrays.stream(response.getAllHeaders()).filter(header -> header.getName().equalsIgnoreCase(MESSAGE)).forEach(header -> message.append(header.getValue()));
+//
+//                if(INTERNAL_SERVER_ERROR.getStatusCode() == response.getStatusLine().getStatusCode()) {
+//                    throw new LoginException(message.toString());
+//                }
+//
+//                throw new LoginException(message.toString());
+//            }
+//
+//            String conteudoResponse = EntityUtils.toString(response.getEntity(), StandardCharsets.UTF_8);
+//
+//            return new Gson().fromJson(conteudoResponse, Subject.class);
+//        } catch (IOException e) {
+//            throw new LoginException(e);
+//        }
+//    }
+
+
 
 }
